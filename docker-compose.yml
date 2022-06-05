@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+
+  mediscreen:
+    image: mediscreen:1.0.1
+    networks:
+      - oc
+    ports:
+      - "8081:8081"
+
+  mediscreen-note:
+    image: mediscreen-note:1.0.1
+    networks:
+      - oc
+    ports:
+      - "8082:8082"
+
+  mediscreen-diabete:
+    image: mediscreen-diabete:1.0.1
+    ports:
+      - "8080:8080"
+
+    networks:
+      - oc
+    depends_on:
+      - mediscreen
+      - mediscreen-note
+      - mediscreen-diabete
+
+networks:
+  oc:
+    driver: bridge
