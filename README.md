@@ -4,7 +4,7 @@ Openclassrooms project number 9
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Home-Page](/images/mediscr_img.png)
+![Home-Page](/images/medisc.png)
 
 Medical application Mediscreen.
 
