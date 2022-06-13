@@ -2,22 +2,50 @@ version: '2'
 
 services:
 
-  mediscreen:
-    image: mediscreen:1.0.1
+  mysql:
+    image: mysql:8
+    restart: unless-stopped
+    volumes:
+      - ./db/:/docker-entrypoint-initdb.d/
+    networks:
+      - oc
+    environment:
+      - MYSQL_ROOT_PASSWORD=1975
+      - MYSQL_DATABASE=mediscreendb
+    ports:
+      - 3307:3306
+
+
+  mongo_db:
+    image: "mongo:4.4.3"
+    restart: always
+    volumes:
+    - ./init/:/data/db
     networks:
       - oc
     ports:
-      - "8081:8081"
+      - 27017:27017
 
-  mediscreen-note:
-    image: mediscreen-note:1.0.1
+  mediscreen:
+    image: mediscreen:1.0.8
     networks:
       - oc
+    depends_on:
+      - mysql
+    ports:
+      - "8081:8081"
+
+  mediscreennote:
+    image: mediscreennote:1.0.8
+    networks:
+      - oc
+    depends_on:
+      - mongo_db
     ports:
       - "8082:8082"
 
   mediscreen-diabete:
-    image: mediscreen-diabete:1.0.1
+    image: mediscreendiabete:1.0.8
     ports:
       - "8080:8080"
 
@@ -25,8 +53,8 @@ services:
       - oc
     depends_on:
       - mediscreen
-      - mediscreen-note
-      - mediscreen-diabete
+      - mediscreennote
+      
 
 networks:
   oc:
