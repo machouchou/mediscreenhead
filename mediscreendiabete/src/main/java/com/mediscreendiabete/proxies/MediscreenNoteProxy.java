@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mediscreendiabete.model.Note;
 
-@FeignClient(name = "mediscreennote", url = "localhost:8082")
+@FeignClient(name = "mediscreennote", url = "mediscreennote:8082")
 public interface MediscreenNoteProxy {
 
 	/**

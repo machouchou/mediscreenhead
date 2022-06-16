@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mediscreendiabete.model.Patient;
 
-@FeignClient(name = "mediscreen", url = "localhost:8081")
+@FeignClient(name = "mediscreen", url = "mediscreen:8081")
 public interface MediscreenProxy {
 	
 	/**

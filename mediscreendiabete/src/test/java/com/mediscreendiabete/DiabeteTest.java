@@ -66,19 +66,7 @@ public class DiabeteTest {
 		Patient patient1 = new Patient(1, "firstname", "lastname", LocalDate.now().minusYears(22), "M", "address1", "111-222-333");
 		assertNotNull(patient1);
 	}
-	
-	/*@Test
-	void getPatient_Test() {
-		Patient patient1 = new Patient(1, "firstname", "lastname", LocalDate.now().minusYears(22), "M", "address1", "111-222-333");
-		Response<Patient> response = new Response<Patient>();
-		response.setData(patient1);
-		response.setStatus(HttpStatus.OK);
-		ResponseEntity<Response<Patient>> result = new ResponseEntity<Response<Patient>>(HttpStatus.OK);
 		
-		when(mediscreenProxy.getPatientById(1)).thenReturn(result);
-		assertNotNull(patient1);
-	}*/
-	
 	@Test
 	void getPatientNotesTest() throws Exception {
 		//ARRANGE:
